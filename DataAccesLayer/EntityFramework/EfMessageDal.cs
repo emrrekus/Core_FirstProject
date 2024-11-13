@@ -12,6 +12,8 @@ namespace DataAccesLayer.EntityFramework
 {
     public class EfMessageDal : GenericRepository<Message>, IMessageDal
     {
+      
+
         public EfMessageDal(Context context) : base(context)
         {
         }

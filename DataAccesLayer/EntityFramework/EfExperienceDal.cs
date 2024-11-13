@@ -12,6 +12,8 @@ namespace DataAccesLayer.EntityFramework
 {
     public class EfExperienceDal : GenericRepository<Experience>, IExperienceDal
     {
+     
+
         public EfExperienceDal(Context context) : base(context)
         {
         }

@@ -12,7 +12,7 @@ namespace BusinessLayer.Concrete
     public class FeatureManager : IFeatureService
     {
 
-        private readonly IFeatureDal _featureDal;
+         private readonly IFeatureDal _featureDal;
 
         public FeatureManager(IFeatureDal featureDal)
         {
