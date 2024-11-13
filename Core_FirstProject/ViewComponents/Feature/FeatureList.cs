@@ -1,4 +1,5 @@
-﻿using BusinessLayer.Concrete;
+﻿using BusinessLayer.Abstract;
+using BusinessLayer.Concrete;
 using DataAccesLayer.Concrete;
 using DataAccesLayer.EntityFramework;
 using Microsoft.AspNetCore.Mvc;
@@ -8,14 +9,17 @@ namespace Core_FirstProject.ViewComponents.Feature
     public class FeatureList : ViewComponent
     {
 
-       
+       private readonly IFeatureService _featureService;
 
-        FeatureManager featureManager = new FeatureManager(new EfFeatureDal(new Context()));
-        
+        public FeatureList(IFeatureService featureService)
+        {
+            _featureService = featureService;
+        }
+
         public IViewComponentResult Invoke()
         {
 
-            var values = featureManager.TGetAll();
+            var values = _featureService.TGetAll();
             return View(values);
         }
 
