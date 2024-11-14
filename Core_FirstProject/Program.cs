@@ -1,8 +1,10 @@
 using BusinessLayer.Abstract;
 using BusinessLayer.Concrete;
 using DataAccesLayer.Abstract;
-using DataAccesLayer.Concrete;
 using DataAccesLayer.EntityFramework;
+using DataAccessLayer.Abstract;
+using DataAccessLayer.Concrete;
+using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -30,6 +32,10 @@ builder.Services.AddScoped<IContactService, ContactManager>();
 builder.Services.AddScoped<IContactDal, EfContactDal>();
 builder.Services.AddScoped<IMessageService, MessageManager>();
 builder.Services.AddScoped<IMessageDal, EfMessageDal>();
+builder.Services.AddScoped<IUserMessageService, UserMessageManager>();
+builder.Services.AddScoped<IUserMessageDal, EfUserMessageDal>();
+builder.Services.AddScoped<IToDoListService, ToDoListManager>();
+builder.Services.AddScoped<IToDoListDal, EfToDoListDal>();
 
 
 

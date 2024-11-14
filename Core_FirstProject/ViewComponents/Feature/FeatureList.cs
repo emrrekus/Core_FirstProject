@@ -1,7 +1,7 @@
 ﻿using BusinessLayer.Abstract;
 using BusinessLayer.Concrete;
-using DataAccesLayer.Concrete;
-using DataAccesLayer.EntityFramework;
+using DataAccessLayer.Concrete;
+using DataAccessLayer.EntityFramework;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Core_FirstProject.ViewComponents.Feature

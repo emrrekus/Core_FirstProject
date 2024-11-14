@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace DataAccesLayer.Migrations
+namespace DataAccessLayer.Migrations
 {
     public partial class mig3 : Migration
     {

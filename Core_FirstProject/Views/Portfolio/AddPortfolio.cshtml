@@ -17,6 +17,10 @@
                     @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
                     @Html.ValidationMessageFor(x => x.Name)
                     <br />
+                    <label>Platform</label>
+                    @Html.TextBoxFor(x => x.Platform, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.Platform)
+                    <br />
                     <label>Görsel 1</label>
                     @Html.TextBoxFor(x => x.ImageUrl, new { @class = "form-control" })
                     @Html.ValidationMessageFor(x => x.ImageUrl)

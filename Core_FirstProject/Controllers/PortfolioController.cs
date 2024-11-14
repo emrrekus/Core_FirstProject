@@ -1,9 +1,10 @@
 ﻿using BusinessLayer.Abstract;
 using BusinessLayer.Concrete;
-using DataAccesLayer.EntityFramework;
+using BusinessLayer.ValidationRules;
+using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Mvc;
-using System.ComponentModel.DataAnnotations;
+
 
 namespace Core_FirstProject.Controllers
 {
@@ -30,9 +31,23 @@ namespace Core_FirstProject.Controllers
         [HttpPost]
         public IActionResult AddPortfolio(Portfolio p)
         {
+            PortfolioValidator validations = new PortfolioValidator();
+            FluentValidation.Results.ValidationResult results = validations.Validate(p);
 
-            _portoflioService.TInsert(p);
-            return RedirectToAction("Index");
+            if (results.IsValid)
+            {
+                _portoflioService.TInsert(p);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                foreach(var item in results.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                }
+            }
+
+            return View();  
        
         }
 
