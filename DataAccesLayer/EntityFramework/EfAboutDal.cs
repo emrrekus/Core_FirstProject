@@ -1,5 +1,5 @@
 ﻿using DataAccessLayer.Abstract;
-using DataAccessLayer.Concrete;
+using DataAccesLayer.Concrete;
 using DataAccessLayer.Repository;
 using EntityLayer.Concrete;
 using System;

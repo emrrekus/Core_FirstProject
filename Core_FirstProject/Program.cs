@@ -3,9 +3,10 @@ using BusinessLayer.Concrete;
 using DataAccesLayer.Abstract;
 using DataAccesLayer.EntityFramework;
 using DataAccessLayer.Abstract;
-using DataAccessLayer.Concrete;
+using DataAccesLayer.Concrete;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
+using Core_FirstProject.Areas.Writer.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -36,6 +37,7 @@ builder.Services.AddScoped<IUserMessageService, UserMessageManager>();
 builder.Services.AddScoped<IUserMessageDal, EfUserMessageDal>();
 builder.Services.AddScoped<IToDoListService, ToDoListManager>();
 builder.Services.AddScoped<IToDoListDal, EfToDoListDal>();
+builder.Services.AddIdentity<WriterUser, WriterRole>().AddEntityFrameworkStores<Context>().AddErrorDescriber<TurkishIdentityErrorDescriber>();
 
 
 
@@ -59,5 +61,13 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Default}/{action=Index}/{id?}");
+
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllerRoute(
+      name: "areas",
+      pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+    );
+});
 
 app.Run();
