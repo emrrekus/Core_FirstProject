@@ -37,6 +37,8 @@ builder.Services.AddScoped<IUserMessageService, UserMessageManager>();
 builder.Services.AddScoped<IUserMessageDal, EfUserMessageDal>();
 builder.Services.AddScoped<IToDoListService, ToDoListManager>();
 builder.Services.AddScoped<IToDoListDal, EfToDoListDal>();
+builder.Services.AddScoped<IAnnouncementService, AnnouncementManager>();
+builder.Services.AddScoped<IAnnouncementDal, EfAnnouncementDal>();
 builder.Services.AddIdentity<WriterUser, WriterRole>().AddEntityFrameworkStores<Context>().AddErrorDescriber<TurkishIdentityErrorDescriber>();
 
 
