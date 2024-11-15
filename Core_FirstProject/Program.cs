@@ -7,6 +7,9 @@ using DataAccesLayer.Concrete;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
 using Core_FirstProject.Areas.Writer.Models;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.Authorization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -33,13 +36,40 @@ builder.Services.AddScoped<IContactService, ContactManager>();
 builder.Services.AddScoped<IContactDal, EfContactDal>();
 builder.Services.AddScoped<IMessageService, MessageManager>();
 builder.Services.AddScoped<IMessageDal, EfMessageDal>();
-builder.Services.AddScoped<IUserMessageService, UserMessageManager>();
-builder.Services.AddScoped<IUserMessageDal, EfUserMessageDal>();
+builder.Services.AddScoped<ISocialMediaService, SocialMediaManager>();
+builder.Services.AddScoped<ISocialMediaDal, EfSocialMediaDal>();
 builder.Services.AddScoped<IToDoListService, ToDoListManager>();
 builder.Services.AddScoped<IToDoListDal, EfToDoListDal>();
 builder.Services.AddScoped<IAnnouncementService, AnnouncementManager>();
 builder.Services.AddScoped<IAnnouncementDal, EfAnnouncementDal>();
+builder.Services.AddScoped<IWriterMessageService, WriterMessageManager>();
+builder.Services.AddScoped<IWriterMessageDal, EfWriterMessageDal>();
 builder.Services.AddIdentity<WriterUser, WriterRole>().AddEntityFrameworkStores<Context>().AddErrorDescriber<TurkishIdentityErrorDescriber>();
+
+builder.Services.AddMvc(config =>
+{
+    var policy = new AuthorizationPolicyBuilder()
+                   .RequireAuthenticatedUser()
+                   .Build();
+    config.Filters.Add(new AuthorizeFilter(policy));
+});
+
+builder.Services.AddMvc();
+//services.AddAuthentication(
+//    CookieAuthenticationDefaults.AuthenticationScheme)
+//    .AddCookie(x =>
+//    {
+//        x.LoginPath = "/AdminLogin/Index/";
+//    });
+
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.Cookie.HttpOnly = true;
+    options.ExpireTimeSpan = TimeSpan.FromMinutes(100);
+    options.AccessDeniedPath = "/ErrorPage/Index/";
+    options.LoginPath = "/Writer/Login/Index/";
+});
+
 
 
 
@@ -64,15 +94,17 @@ app.UseAuthorization();
 
 app.UseEndpoints(endpoints =>
 {
+   
     endpoints.MapControllerRoute(
         name: "areas",
         pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
     );
-
     endpoints.MapControllerRoute(
-        name: "default",
-        pattern: "{controller=Default}/{action=Index}/{id?}"
-    );
+      name: "default",
+      pattern: "{controller=Default}/{action=Index}/{id?}"
+  );
+
+
 });
 
 app.Run();

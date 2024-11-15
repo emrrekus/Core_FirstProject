@@ -33,6 +33,11 @@ namespace BusinessLayer.Concrete
             return _contactDal.GetById(id);
         }
 
+        public List<Contact> TGetListbyFilter()
+        {
+            throw new NotImplementedException();
+        }
+
         public void TInsert(Contact entity)
         {
             _contactDal.Insert(entity);

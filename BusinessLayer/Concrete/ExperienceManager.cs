@@ -34,6 +34,11 @@ namespace BusinessLayer.Concrete
            return _experienceDal.GetById(id);
         }
 
+        public List<Experience> TGetListbyFilter()
+        {
+            throw new NotImplementedException();
+        }
+
         public void TInsert(Experience entity)
         {
            _experienceDal.Insert(entity);

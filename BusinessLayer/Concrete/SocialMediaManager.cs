@@ -34,6 +34,11 @@ namespace BusinessLayer.Concrete
             return _socialMediaDal.GetById(id);
         }
 
+        public List<SocialMedia> TGetListbyFilter()
+        {
+            throw new NotImplementedException();
+        }
+
         public void TInsert(SocialMedia entity)
         {
           _socialMediaDal.Insert(entity);

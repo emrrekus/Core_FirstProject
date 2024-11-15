@@ -2,10 +2,12 @@
 using BusinessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Core_FirstProject.Controllers
 {
+ 
     public class ExperienceController : Controller
     {
         private readonly IExperienceService _experienceService;
@@ -13,8 +15,9 @@ namespace Core_FirstProject.Controllers
         public ExperienceController(IExperienceService experienceService)
         {
             _experienceService = experienceService;
-        }
+        }   
 
+     
         public IActionResult Index()
         {
             var values = _experienceService.TGetAll();

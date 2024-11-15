@@ -34,6 +34,11 @@ namespace BusinessLayer.Concrete
             return _announcementDal.GetById(id);
         }
 
+        public List<Announcement> TGetListbyFilter()
+        {
+            throw new NotImplementedException();
+        }
+
         public void TInsert(Announcement entity)
         {
             throw new NotImplementedException();

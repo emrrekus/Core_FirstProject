@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Linq.Expressions;
 
 namespace DataAccessLayer.Repository
 {
@@ -45,6 +46,11 @@ namespace DataAccessLayer.Repository
         {
             _context.Set<T>().Update(entity);
             _context.SaveChanges();
+        }
+        public List<T> GetbyFilter(Expression<Func<T, bool>> filter)
+        {
+            using var c = new Context();
+            return c.Set<T>().Where(filter).ToList();
         }
     }
 }

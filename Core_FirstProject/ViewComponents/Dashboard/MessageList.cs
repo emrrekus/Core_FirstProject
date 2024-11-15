@@ -11,16 +11,17 @@ namespace Core_Proje.ViewComponents.Dashboard
 {
     public class MessageList:ViewComponent
     {
-        private readonly IUserMessageService _userMessageService;
 
-        public MessageList(IUserMessageService messageService)
+       private readonly IMessageService _messageService;
+
+        public MessageList(IMessageService messageService)
         {
-            _userMessageService = messageService;
+            _messageService = messageService;
         }
 
         public IViewComponentResult Invoke()
         {
-            var values = _userMessageService.GetUserMessageWithUserService();
+            var values = _messageService.TGetAll().Take(5).ToList();
             return View(values);
         }
     }

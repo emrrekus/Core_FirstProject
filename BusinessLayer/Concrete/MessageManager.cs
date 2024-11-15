@@ -33,6 +33,11 @@ namespace BusinessLayer.Concrete
             return _messageDal.GetById(id);
         }
 
+        public List<Message> TGetListbyFilter()
+        {
+            throw new NotImplementedException();
+        }
+
         public void TInsert(Message entity)
         {
             _messageDal.Insert(entity);

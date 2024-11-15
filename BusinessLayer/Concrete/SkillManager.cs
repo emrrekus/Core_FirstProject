@@ -33,6 +33,11 @@ namespace BusinessLayer.Concrete
            return _skillDal.GetById(id);
         }
 
+        public List<Skill> TGetListbyFilter()
+        {
+            throw new NotImplementedException();
+        }
+
         public void TInsert(Skill entity)
         {
            _skillDal.Insert(entity);

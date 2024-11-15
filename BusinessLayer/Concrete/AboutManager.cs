@@ -34,6 +34,11 @@ namespace BusinessLayer.Concrete
             return _aboutDal.GetById(id);
         }
 
+        public List<About> TGetListbyFilter()
+        {
+            throw new NotImplementedException();
+        }
+
         public void TInsert(About entity)
         {
             _aboutDal.Insert(entity);

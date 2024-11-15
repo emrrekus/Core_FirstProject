@@ -35,6 +35,11 @@ namespace BusinessLayer.Concrete
             throw new NotImplementedException();
         }
 
+        public List<ToDoList> TGetListbyFilter()
+        {
+            throw new NotImplementedException();
+        }
+
         public void TInsert(ToDoList entity)
         {
             throw new NotImplementedException();

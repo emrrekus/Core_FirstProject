@@ -34,6 +34,11 @@ namespace BusinessLayer.Concrete
             return _featureDal.GetById(id);
         }
 
+        public List<Feature> TGetListbyFilter()
+        {
+            throw new NotImplementedException();
+        }
+
         public void TInsert(Feature entity)
         {
             _featureDal.Insert(entity);

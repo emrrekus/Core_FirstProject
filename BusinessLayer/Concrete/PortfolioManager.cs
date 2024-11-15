@@ -34,6 +34,11 @@ namespace BusinessLayer.Concrete
             return _portfolioDal.GetById(id);
         }
 
+        public List<Portfolio> TGetListbyFilter()
+        {
+            throw new NotImplementedException();
+        }
+
         public void TInsert(Portfolio entity)
         {
             _portfolioDal.Insert(entity);

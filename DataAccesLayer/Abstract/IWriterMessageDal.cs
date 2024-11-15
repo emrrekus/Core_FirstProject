@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DataAccesLayer.Abstract
 {
-    public interface IUserDal :IGenericDal<User>
+    public interface IWriterMessageDal : IGenericDal<WriterMessage>
     {
     }
 }
