@@ -44,6 +44,8 @@ builder.Services.AddScoped<IAnnouncementService, AnnouncementManager>();
 builder.Services.AddScoped<IAnnouncementDal, EfAnnouncementDal>();
 builder.Services.AddScoped<IWriterMessageService, WriterMessageManager>();
 builder.Services.AddScoped<IWriterMessageDal, EfWriterMessageDal>();
+builder.Services.AddScoped<IWriterService, WriterManager>();
+builder.Services.AddScoped<IWriterDal, EfWriterDal>();
 builder.Services.AddIdentity<WriterUser, WriterRole>().AddEntityFrameworkStores<Context>().AddErrorDescriber<TurkishIdentityErrorDescriber>();
 
 builder.Services.AddMvc(config =>
@@ -82,6 +84,8 @@ if (!app.Environment.IsDevelopment())
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
+
+app.UseStatusCodePagesWithReExecute("/ErrorPage/Error404");
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();

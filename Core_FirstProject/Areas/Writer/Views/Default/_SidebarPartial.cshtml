@@ -1,4 +1,5 @@
-﻿<nav class="sidebar sidebar-offcanvas" id="sidebar">
+﻿@using Microsoft.AspNetCore.Identity
+<nav class="sidebar sidebar-offcanvas" id="sidebar">
     <ul class="nav">
         <li class="nav-item">
             <a class="nav-link" href="/Writer/Dashboard/Index/">
@@ -43,6 +44,15 @@
                 <span class="menu-title">Ayarlar</span>
             </a>
         </li>
+        @if (User.IsInRole("Admin"))
+        {
+            <li class="nav-item">
+                <a class="nav-link" href="/Feature/Index">
+                    <i class="ti-power-off menu-icon"></i>
+                    <span class="menu-title">Admin Panele Git</span>
+                </a>
+            </li>
+        }
         <li class="nav-item">
             <a class="nav-link" href="/Writer/Login/LogOut/">
                 <i class="ti-power-off menu-icon"></i>

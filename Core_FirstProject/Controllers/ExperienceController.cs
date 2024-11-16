@@ -7,7 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Core_FirstProject.Controllers
 {
- 
+
+    [Authorize(Roles ="Admin")]
     public class ExperienceController : Controller
     {
         private readonly IExperienceService _experienceService;
